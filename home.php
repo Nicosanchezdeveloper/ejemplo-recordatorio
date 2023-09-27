@@ -14,19 +14,22 @@ function showHome(){
     ";
     include_once 'recordatorios.php';
     
-    function insertRecordatorio($titulo, $descripcion){
-        $db = new PDO('mysql:host=localhost;dbname=recordatorio;charset=utf8', 'root', '');
-        $sentencia = $db->prepare("INSERT INTO recordatorios (titulo_recordatorio, descripcion_recordatorio) VALUES (?, ?)");
-        $sentencia->execute([$titulo, $descripcion]);
-    }
-    
-    function addRecordatorio(){
-        $titulo = $_POST['titulo_recordatorio'];
-        $descripcion = $_POST['descripcion_recordatorio'];
-        insertRecordatorio([$titulo, $descripcion]);
-        echo "Se inserto el recordatorio con exito";
-        
-    }
+   
 }
+
+function insertRecordatorio($titulo, $descripcion){
+    $db = new PDO('mysql:host=localhost;dbname=recordatorio;charset=utf8', 'root', '');
+    $sentencia = $db->prepare("INSERT INTO recordatorios (titulo_recordatorio, descripcion_recordatorio) VALUES (?, ?)");
+    $sentencia->execute([$titulo, $descripcion]);
+}
+
+function addRecordatorio(){
+    $titulo = $_POST['titulo_recordatorio'];
+    $descripcion = $_POST['descripcion_recordatorio'];
+    insertRecordatorio([$titulo, $descripcion]);
+    echo "Se inserto el recordatorio con exito";
+    
+}
+
 include_once 'templates/footer.php';
 ?>
