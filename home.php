@@ -1,6 +1,7 @@
 <?php
 
 include_once 'templates/header.php';
+require_once 'db.php';
 function showHome(){
     echo "
     
@@ -18,7 +19,7 @@ function showHome(){
 }
 
 function insertRecordatorio($titulo, $descripcion){
-    $db = new PDO('mysql:host=localhost;dbname=recordatorio;charset=utf8', 'root', '');
+    db_conect();
     $sentencia = $db->prepare("INSERT INTO recordatorios (titulo_recordatorio, descripcion_recordatorio) VALUES (?, ?)");
     $sentencia->execute([$titulo, $descripcion]);
 }
@@ -26,10 +27,9 @@ function insertRecordatorio($titulo, $descripcion){
 function addRecordatorio(){
     $titulo = $_POST['titulo_recordatorio'];
     $descripcion = $_POST['descripcion_recordatorio'];
-    insertRecordatorio([$titulo, $descripcion]);
+    insertRecordatorio($titulo, $descripcion);
     echo "Se inserto el recordatorio con exito";
     
 }
-
 include_once 'templates/footer.php';
 ?>
