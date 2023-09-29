@@ -5,21 +5,24 @@
         home        showHome();
         agregar     addRecordatorio();
 */
+require_once './app/home.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
-require_once 'home.php';
 $action = 'home';
 if (!empty($_GET['action'])) { // si viene definida la reemplazamos
     $action = $_GET['action'];
+}else {
+    // Agrega una instrucción de depuración para ver qué valor se está utilizando por defecto
+    echo 'Valor de action por defecto: ' . $action;
 }
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
 // determina que camino seguir según la acción
-switch ($params[0]) {
+switch($params[0]) {
     case 'home':
         showHome();
         break;
-    case 'agregar':
+    case 'agregar': 
         addRecordatorio();
         break;
     default:
