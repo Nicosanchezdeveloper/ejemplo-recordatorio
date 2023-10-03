@@ -6,13 +6,11 @@
         agregar     addRecordatorio();
 */
 require_once './app/home.php';
+require_once './app/log_in.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 $action = 'home';
 if (!empty($_GET['action'])) { // si viene definida la reemplazamos
     $action = $_GET['action'];
-}else {
-    // Agrega una instrucción de depuración para ver qué valor se está utilizando por defecto
-    echo 'Valor de action por defecto: ' . $action;
 }
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
@@ -24,6 +22,12 @@ switch($params[0]) {
         break;
     case 'agregar': 
         addRecordatorio();
+        break;
+    case 'delete_recordatorio':
+        removeRecordatorio($params[1]);
+        break;
+    case 'log_in':
+        showLogIn();
         break;
     default:
         echo('404 Page not found');

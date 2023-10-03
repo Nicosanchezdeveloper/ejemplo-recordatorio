@@ -20,4 +20,15 @@ function  getRecordatorios(){
     return $recordatorios;
 }
 
+function deleteRecordatorio($id){
+    $db = db_conect();
+    $sentencia = $db->prepare("DELETE FROM recordatorios WHERE id_recordatorio = ?");
+    $sentencia->execute([$id]);
+
+}
+function removeRecordatorio($id){
+    deleteRecordatorio($id);
+    header('Location: ' . BASE_URL);
+}
+
 ?>
