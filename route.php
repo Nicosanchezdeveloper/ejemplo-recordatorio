@@ -5,8 +5,7 @@
         home        showHome();
         agregar     addRecordatorio();
 */
-require_once './app/home.php';
-require_once './app/log_in.php';
+require_once './app/controllers/recordatorio.controller.php';
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 $action = 'home';
 if (!empty($_GET['action'])) { // si viene definida la reemplazamos
@@ -18,7 +17,8 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch($params[0]) {
     case 'home':
-        showHome();
+        $controller = new RecordatorioController();
+        $controller->showHome();
         break;
     case 'agregar': 
         addRecordatorio();
