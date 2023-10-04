@@ -16,7 +16,7 @@ class RecordatorioController {
         $this->view->showHome($recordatorio);
     }
     public function removeRecordatorio($id){
-        deleteRecordatorio($id);
+        $this->model->deleteRecordatorio($id);
         header('Location: ' . BASE_URL);
     }
     public function addRecordatorio(){
@@ -24,7 +24,7 @@ class RecordatorioController {
         $titulo = $_POST['titulo_recordatorio'];
         $descripcion = $_POST['descripcion_recordatorio'];
         echo "Titulo: $titulo, Descripcion: $descripcion";
-        insertRecordatorio($titulo, $descripcion);
+        $this->model->insertRecordatorio($titulo, $descripcion);
         echo "<p> Se inserto el recordatorio con exito </p>";
         header('Location: ' . BASE_URL);
     }

@@ -13,15 +13,13 @@ class RecordatorioModel{
         $sentencia = $this->db->prepare("INSERT INTO recordatorios (titulo_recordatorio, descripcion_recordatorio) VALUES (?, ?)");
         $sentencia->execute([$titulo, $descripcion]);
     }
-
+    
     public function getRecordatorios(){
 
         $sentencia = $this->db->prepare("SELECT * FROM recordatorios");
         $sentencia->execute();
         
-        $recordatorios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        
-        return $recordatorios;
+        return $sentencia->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function deleteRecordatorio($id){

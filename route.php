@@ -14,18 +14,17 @@ if (!empty($_GET['action'])) { // si viene definida la reemplazamos
 // parsea la accion Ej: dev/juan --> ['dev', juan]
 $params = explode('/', $action);
 
+// instancia el controller.
+$controller = new RecordatorioController();
 // determina que camino seguir según la acción
 switch($params[0]) {
     case 'home':
-        $controller = new RecordatorioController();
         $controller->showHome();
         break;
     case 'agregar':
-        $controller = new RecordatorioController();
         $controller->addRecordatorio();
         break;
     case 'delete_recordatorio':
-        $controller = new RecordatorioController();
         $controller->removeRecordatorio($params[1]);
         break;
     case 'log_in':
