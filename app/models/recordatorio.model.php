@@ -3,7 +3,7 @@
 class RecordatorioModel{
     private $db;
 
-    public function __contruct(){
+    public function __construct(){
         $this->db = new PDO('mysql:host=localhost;dbname=recordatorio;charset=utf8', 'root', '');
     }
 
@@ -30,10 +30,7 @@ class RecordatorioModel{
         $sentencia->execute([$id]);
 
     }
-    public function removeRecordatorio($id){
-        deleteRecordatorio($id);
-        header('Location: ' . BASE_URL);
-    }
+  
 
     
 }

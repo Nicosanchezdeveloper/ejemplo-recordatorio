@@ -6,7 +6,7 @@ class RecordatorioController {
     private $model;
     private $view;
 
-    public function __contruct(){
+    public function __construct(){
         $this->model = new RecordatorioModel();
         $this->view = new RecordatorioView();
     }
@@ -15,7 +15,10 @@ class RecordatorioController {
         $recordatorio = $this->model->getRecordatorios();
         $this->view->showHome($recordatorio);
     }
-
+    public function removeRecordatorio($id){
+        deleteRecordatorio($id);
+        header('Location: ' . BASE_URL);
+    }
     public function addRecordatorio(){
     
         $titulo = $_POST['titulo_recordatorio'];

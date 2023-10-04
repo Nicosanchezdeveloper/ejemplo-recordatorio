@@ -3,7 +3,7 @@
 class RecordatorioView{
     
     public function showHome($recordatorios){
-        require '../templates/header.php';
+        require './templates/header.php';
         ?>
         <form action='agregar' method='POST'>
             <div class="mb-3">

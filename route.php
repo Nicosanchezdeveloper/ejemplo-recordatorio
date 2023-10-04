@@ -20,11 +20,13 @@ switch($params[0]) {
         $controller = new RecordatorioController();
         $controller->showHome();
         break;
-    case 'agregar': 
-        addRecordatorio();
+    case 'agregar':
+        $controller = new RecordatorioController();
+        $controller->addRecordatorio();
         break;
     case 'delete_recordatorio':
-        removeRecordatorio($params[1]);
+        $controller = new RecordatorioController();
+        $controller->removeRecordatorio($params[1]);
         break;
     case 'log_in':
         showLogIn();
